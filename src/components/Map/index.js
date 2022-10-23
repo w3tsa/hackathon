@@ -11,7 +11,7 @@ const center = {
   lng: -38.523,
 };
 
-function Map() {
+function Map({ coords }) {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_MAP_KEY,
@@ -32,8 +32,8 @@ function Map() {
   return isLoaded ? (
     <GoogleMap
       mapContainerStyle={containerStyle}
-      center={center}
-      zoom={10}
+      center={coords}
+      zoom={14}
       onLoad={onLoad}
       onUnmount={onUnmount}
     >

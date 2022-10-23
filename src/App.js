@@ -6,8 +6,18 @@ import Header from "./components/Header";
 import List from "./components/List";
 import Map from "./components/Map";
 import PlaceDetail from "./components/PlaceDetail";
+import getPlacesData from "./api";
+import { useEffect, useState } from "react";
 
 function App() {
+  const [places, setPlaces] = useState([]);
+
+  useEffect(() => {
+    getPlacesData().then((data) => {
+      setPlaces(data);
+    });
+  }, []);
+
   return (
     <>
       <Grid
@@ -24,11 +34,11 @@ function App() {
         <GridItem pl="2" bg="black" area={"header"}>
           <Header />
         </GridItem>
-        <GridItem pl="2" bg="black" area={"nav"}>
-          <List />
+        <GridItem pl="2" bg="black" area={"nav"} overflowY={"scroll"}>
+          <List places={places} />
         </GridItem>
         <GridItem pl="2" area={"main"}>
-          <Map />
+          <Map coords={{ lat: 39.9567548, lng: -86.01335 }} />
         </GridItem>
         {/* <GridItem pl="2" bg="blue.300" area={"footer"}>
           <PlaceDetail />

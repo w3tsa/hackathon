@@ -9,10 +9,12 @@ import {
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
 import { Autocomplete } from "@react-google-maps/api";
+import { useState } from "react";
 
 // chakra ui
 
 const Header = () => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <Box
       display={"flex"}
