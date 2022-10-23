@@ -28,11 +28,23 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+:root {
+  --reach-combobox: 1;
+}
+
+[data-reach-combobox-popover] {
+  border: solid 1px hsla(0, 0%, 0%, 0.25);
+  background: rgba(5, 5, 5, 0.99);
+  color: black;
+  font-size: 85%;
+}
+
+.combobox-input {
+  padding: 2px;
+  border-radius: 3px;
+  color: white;
+}
+
+::-webkit-input-placeholder {
+  text-align: center;
 }

@@ -42,7 +42,6 @@ import PlaceDetail from "../PlaceDetail";
 // ];
 
 const List = ({ places }) => {
-  console.log("coming from List", places);
   return (
     <Container>
       <Text color={"whiteAlpha.900"} textAlign={"center"} fontSize={"1.5em"}>
