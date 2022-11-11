@@ -9,17 +9,15 @@ import {
 } from "@react-google-maps/api";
 
 // local imports
-import Places from "../SearchTerm";
-import { Box, Flex, position, Text } from "@chakra-ui/react";
+import Places from "../Places";
 
 const containerStyle = {
   width: "100%",
   height: "100vh",
 };
 
-function Map({ places }) {
+function Map() {
   const [destination, setDestination] = useState();
-  const [location, setLocation] = useState({ lat: 0, lng: 0 });
   const mapRef = useRef();
   const center = useMemo(
     () => ({
@@ -37,7 +35,7 @@ function Map({ places }) {
   );
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_MAP_KEY,
+    googleMapsApiKey: process.env.REACT_APP_API_KEY,
     libraries: ["places"],
   });
 
@@ -55,41 +53,26 @@ function Map({ places }) {
   }, []);
 
   return isLoaded ? (
-    <div>
-      <Flex justifyContent={"space-around"} m={2}>
-        <Text color="black">Search Location</Text>
+    <div className="container">
+      <aside>
+        <h1>Controls</h1>
         <Places
           setDestination={(position) => {
             setDestination(position);
             mapRef.current?.panTo(position);
           }}
-          setLocation={setLocation}
         />
-      </Flex>
+      </aside>
       <GoogleMap
         mapContainerStyle={containerStyle}
-        center={location.lat === 0 ? center : location}
-        zoom={location.lat === 0 ? 10 : 14}
+        center={center}
+        zoom={10}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={options}
       >
-        {places.map((place) => {
-          return (
-            <Marker
-              position={{ lat: place.lat, lng: place.lng }}
-              icon="https://img.icons8.com/color/50/google-maps-new.png"
-              key={place.id}
-            />
-          );
-        })}
-        {destination && (
-          <Marker
-            position={destination}
-            icon="https://img.icons8.com/color/50/google-maps-new.png"
-          />
-        )}
         {/* Child components, such as markers, info windows, etc. */}
+        <></>
       </GoogleMap>
     </div>
   ) : (

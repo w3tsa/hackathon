@@ -9,6 +9,9 @@ import PlaceDetail from "./components/PlaceDetail";
 import getPlacesData from "./api";
 import { useEffect, useState } from "react";
 
+// andrews
+import { ChakraProvider } from "@chakra-ui/react";
+
 function App() {
   const [places, setPlaces] = useState([]);
 

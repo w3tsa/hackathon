@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -47,4 +47,45 @@
 
 ::-webkit-input-placeholder {
   text-align: center;
+} */
+
+/* -------custom css------- */
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+
+.container aside {
+  padding: 9%;
+}
+
+.combobox-input {
+  width: 100%;
+  padding: 1em;
+}
+
+/* ------------ Custom CSS for pages --------------- */
+.public {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 5rem;
+  padding-bottom: 10rem;
+  padding-left: 2rem;
+  padding-right: 1rem;
+  margin: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* z-index: -1000; */
+
+  justify-content: space-between;
+  text-align: center;
+
+  /* background-color: var(--public-background);
+  color: var(--public-header-color); */
 }
