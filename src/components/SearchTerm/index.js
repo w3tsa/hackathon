@@ -10,7 +10,6 @@ import {
   ComboboxPopover,
   ComboboxList,
   ComboboxOption,
-  ComboboxOptionText,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 
@@ -39,7 +38,7 @@ const Places = ({ setDestination, setLocation }) => {
         onChange={(e) => setValue(e.target.value)}
         className="combobox-input"
         placeholder="Search..."
-        style={{ color: "black" }}
+        style={{ color: "black", border: "1px solid black" }}
       />
       <ComboboxPopover>
         <ComboboxList>

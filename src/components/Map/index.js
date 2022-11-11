@@ -1,16 +1,9 @@
 import { useMemo, useRef, memo, useCallback, useState } from "react";
-import {
-  GoogleMap,
-  useJsApiLoader,
-  Marker,
-  DirectionsRenderer,
-  Circle,
-  MarkerClusterer,
-} from "@react-google-maps/api";
+import { GoogleMap, useJsApiLoader, Marker } from "@react-google-maps/api";
 
 // local imports
 import Places from "../SearchTerm";
-import { Box, Flex, position, Text } from "@chakra-ui/react";
+import { Flex, Text } from "@chakra-ui/react";
 
 const containerStyle = {
   width: "100%",
