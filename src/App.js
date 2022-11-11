@@ -5,12 +5,8 @@ import "./App.css";
 import Header from "./components/Header";
 import List from "./components/List";
 import Map from "./components/Map";
-import PlaceDetail from "./components/PlaceDetail";
 import getPlacesData from "./api";
 import { useEffect, useState } from "react";
-
-// andrews
-import { ChakraProvider } from "@chakra-ui/react";
 
 function App() {
   const [places, setPlaces] = useState([]);

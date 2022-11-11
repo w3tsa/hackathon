@@ -15,8 +15,7 @@ import "@reach/combobox/styles.css";
 
 const Places = ({ setDestination, setLocation }) => {
   const {
-    ready,
-    value,
+    value, //ready,
     setValue,
     suggestions: { status, data },
     clearSuggestions,

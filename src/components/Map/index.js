@@ -43,12 +43,13 @@ function Map({ places }) {
   // }, []);
   const onLoad = useCallback((map) => (mapRef.current = map), []);
 
-  const onUnmount = useCallback(function callback(map) {
+  const onUnmount = useCallback(function callback() {
     setMap(null);
   }, []);
 
   return isLoaded ? (
     <div>
+      {console.log(map)}
       <Flex justifyContent={"space-around"} m={2}>
         <Text color="black">Search Location</Text>
         <Places
