@@ -1,91 +1,114 @@
+import { React } from "react";
+import { FormControl, Text, FormLabel, Input, Button, Stack } from '@chakra-ui/react';
+import axios from 'axios';
+import { getGeocode, getLatLng } from 'use-places-autocomplete';
 import {
-  FormControl,
-  Text,
-  FormLabel,
-  Input,
-  Button,
-  Stack,
-  Container,
-} from "@chakra-ui/react";
-import axios from "axios";
+  useJsApiLoader
+} from "@react-google-maps/api";
+import PlacesAutocomplete from "../elements/SearchAutocomplete";
 
 function SubmitEvent() {
+  const { isLoaded } = useJsApiLoader({
+    id: "google-map-script",
+    googleMapsApiKey: process.env.REACT_APP_API_KEY,
+    libraries: ["places"],
+  });
+  
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    let url = process.env.REACT_APP_DATABASE_URL + "Events";
+    let url = process.env.REACT_APP_DATABASE_URL + 'Events';
 
-    let payLoad = {
-      event_name: e.target.eventName.value,
-      address: e.target.eventAddress.value,
-      description: e.target.eventDescription.value,
-      date: e.target.eventDate.value,
-    };
+    console.log(e.target.searchAddress);
 
-    let headers = {
-      headers: {
-        apikey: process.env.REACT_APP_DATABASE_API_KEY,
-        Authorization: "Bearer" + process.env.REACT_APP_DATABASE_API_KEY,
-      },
-    };
+    getGeocode({address: e.target.searchAddress.value}).then((res) => {
 
-    axios
-      .post(url, payLoad, headers)
-      .then(() => {
-        console.log("Submission successfull.");
-      })
-      .catch((error) => {
-        console.error("Submission error occurred: ", error.response);
-        console.error(error);
-      });
+      let { lat, lng } = getLatLng(res[0]);
+      console.log(lat, lng);
+
+      let payLoad = {
+        event_name: e.target.eventName.value,
+        address: e.target.searchAddress.value,
+        description: e.target.eventDescription.value,
+        date: e.target.eventDate.value,
+        lat: lat,
+        lng: lng
+      };
+  
+      let headers = {
+        headers: {
+          apikey: process.env.REACT_APP_DATABASE_API_KEY,
+          Authorization: 'Bearer' + process.env.REACT_APP_DATABASE_API_KEY
+        }
+      }
+  
+      axios.post(url, payLoad, headers)
+        .then(() => {
+          console.log('Submission successfull.');
+        })
+        .catch((error) => {
+          console.error('Submission error occurred: ', error.response);
+          console.error(error);
+        })
+
+    })
+    .catch((err) => {
+      console.log("ERROR: ", err);
+    })
 
     /* NEED ERROR HANDLING IF PAYLOAD ERRORS OUT. */
-  };
+  }
 
-  return (
-    <Container mt={5}>
+  return isLoaded ? (
+    <div className='submitevent public'>
       <Stack>
         <div>
-          <Text fontSize="3xl">Submit your event!</Text>
+          <Text fontSize='3xl'>
+            Submit your event!
+          </Text>
         </div>
         <form onSubmit={handleSubmit}>
           <FormControl>
             {/* Event Name */}
             <div>
-              <FormLabel mt="1rem">Event Name:</FormLabel>
-              <Input name="eventName" className="eventName" />
+              <FormLabel mt='1rem'>Event Name (required):</FormLabel>
+              <Input name='eventName' className='eventName' placeholder='Type name'/>
             </div>
 
-            {/* Address */}
+            {/* Address  */}
             <div>
-              <FormLabel mt="1rem">Address:</FormLabel>
-              <Input name="eventAddress" className="eventAddress" />
+              <Text mt='1rem' className='css-4ykw5o'>Address (required):</Text>
+              <PlacesAutocomplete name='eventAddress' className='eventAddress' />
             </div>
 
             {/* Description */}
             <div>
-              <FormLabel mt="1rem">Description:</FormLabel>
-              <Input name="eventDescription" className="eventDescription" />
+              <FormLabel mt='1rem'>Description:</FormLabel>
+              <Input name='eventDescription' className='eventDescription' placeholder='Type description'/>
             </div>
 
             {/* Date */}
             <div>
-              <FormLabel mt="1rem">Date:</FormLabel>
-              <Input name="eventDate" className="eventDate" />
+              <FormLabel mt='1rem'>Date (required):</FormLabel>
+              <Input name='eventDate' className='eventDate' placeholder='Type date'/>
             </div>
 
             <Button
-              mt="1rem"
-              loadingText="Submitting"
-              colorScheme="teal"
-              variant="outline"
-              type="submit"
+              mt='1rem'
+              loadingText='Submitting'
+              colorScheme='teal'
+              variant='outline'
+              type='submit'
             >
               Submit
             </Button>
           </FormControl>
         </form>
       </Stack>
-    </Container>
+
+    </div>
+  ) : (
+    <>Loading...</>
   );
 }
 
