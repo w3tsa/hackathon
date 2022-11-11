@@ -38,7 +38,7 @@ function App() {
           <List places={places} />
         </GridItem>
         <GridItem pl="2" area={"main"}>
-          <Map coords={{ lat: 39.9567548, lng: -86.01335 }} />
+          <Map coords={{ lat: 39.9567548, lng: -86.01335 }} places={places} />
         </GridItem>
         {/* <GridItem pl="2" bg="blue.300" area={"footer"}>
           <PlaceDetail />

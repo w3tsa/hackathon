@@ -10,14 +10,14 @@ import {
 
 // local imports
 import Places from "../SearchTerm";
-import { Box, Flex, Text } from "@chakra-ui/react";
+import { Box, Flex, position, Text } from "@chakra-ui/react";
 
 const containerStyle = {
   width: "100%",
   height: "100vh",
 };
 
-function Map() {
+function Map({ places }) {
   const [destination, setDestination] = useState();
   const [location, setLocation] = useState({ lat: 0, lng: 0 });
   const mapRef = useRef();
@@ -56,9 +56,8 @@ function Map() {
 
   return isLoaded ? (
     <div>
-      {console.log(location.lat)}
       <Flex justifyContent={"space-around"} m={2}>
-        <Text color="white">Search Location</Text>
+        <Text color="black">Search Location</Text>
         <Places
           setDestination={(position) => {
             setDestination(position);
@@ -75,8 +74,24 @@ function Map() {
         onUnmount={onUnmount}
         options={options}
       >
+        {places.map((place) => {
+          return (
+            <Marker
+              position={{ lat: place.lat, lng: place.lng }}
+              icon="https://img.icons8.com/color/50/google-maps-new.png"
+              key={place.id}
+            />
+          );
+        })}
+
+        {console.log("right now", places)}
+        {destination && (
+          <Marker
+            position={destination}
+            icon="https://img.icons8.com/color/50/google-maps-new.png"
+          />
+        )}
         {/* Child components, such as markers, info windows, etc. */}
-        <></>
       </GoogleMap>
     </div>
   ) : (

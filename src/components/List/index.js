@@ -55,6 +55,7 @@ const List = ({ places }) => {
                 eventName={place.event_name}
                 address={place.address}
                 key={place.id}
+                image={place.imgSrc}
               />
             );
           })
