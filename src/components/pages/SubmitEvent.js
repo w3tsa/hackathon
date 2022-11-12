@@ -17,7 +17,7 @@ function SubmitEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let url = process.env.REACT_APP_SUPABASE_URL + 'Events';
+    let url = process.env.REACT_APP_SUPABASE_URL;
 
     console.log(e.target.searchAddress);
 
