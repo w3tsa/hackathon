@@ -49,7 +49,7 @@ function Map({ places }) {
 
   return isLoaded ? (
     <div>
-      {/* {console.log(map)} */}
+      {console.log(map)}
       <Flex justifyContent={"space-around"} m={2}>
         <Text color="black">Search Location</Text>
         <Places

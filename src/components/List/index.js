@@ -8,39 +8,6 @@ import {
 } from "@chakra-ui/react";
 import PlaceDetail from "../PlaceDetail";
 
-// const places = [
-//   {
-//     id: 267,
-//     created_at: "2022-10-16T16:23:00.330665+00:00",
-//     event_name: "Dailey & Vincent",
-//     lat: null,
-//     lng: null,
-//     description: "",
-//     date: "2022-10-16",
-//     address: "Butler University",
-//   },
-//   {
-//     id: 268,
-//     created_at: "2022-10-16T16:23:00.430084+00:00",
-//     event_name: "Jacksonville Jaguars vs. Indianapolis Colts - Marvel Game",
-//     lat: null,
-//     lng: null,
-//     description: "",
-//     date: "2022-10-16",
-//     address: "Lucas Oil Stadium",
-//   },
-//   {
-//     id: 269,
-//     created_at: "2022-10-16T16:23:00.53039+00:00",
-//     event_name: "Carrie Underwood - Denim & Rhinestones Tour",
-//     lat: null,
-//     lng: null,
-//     description: "",
-//     date: "2022-10-17",
-//     address: "Gainbridge Fieldhouse",
-//   },
-// ];
-
 const List = ({ places }) => {
   return (
     <Container>
