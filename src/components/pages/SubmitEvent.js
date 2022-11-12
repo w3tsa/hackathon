@@ -17,7 +17,7 @@ function SubmitEvent() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    let url = process.env.REACT_APP_DATABASE_URL + 'Events';
+    let url = process.env.REACT_APP_SUPABASE_URL + 'Events';
 
     console.log(e.target.searchAddress);
 
@@ -37,8 +37,8 @@ function SubmitEvent() {
   
       let headers = {
         headers: {
-          apikey: process.env.REACT_APP_DATABASE_API_KEY,
-          Authorization: 'Bearer' + process.env.REACT_APP_DATABASE_API_KEY
+          apikey: process.env.REACT_APP_SUPABASE_KEY,
+          Authorization: 'Bearer' + process.env.REACT_APP_SUPABASE_KEY
         }
       }
   
