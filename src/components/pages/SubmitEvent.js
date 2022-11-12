@@ -10,7 +10,7 @@ import PlacesAutocomplete from "../elements/SearchAutocomplete";
 function SubmitEvent() {
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_MAP_KEY,
     libraries: ["places"],
   });
   
