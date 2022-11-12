@@ -16,8 +16,8 @@ function Map({ places }) {
   const mapRef = useRef();
   const center = useMemo(
     () => ({
-      lat: -3.745,
-      lng: -38.524,
+      lat: 39.77606939470607,
+      lng: -86.15815722037934,
     }),
     []
   );
@@ -49,7 +49,7 @@ function Map({ places }) {
 
   return isLoaded ? (
     <div>
-      {console.log(map)}
+      {/* {console.log(map)} */}
       <Flex justifyContent={"space-around"} m={2}>
         <Text color="black">Search Location</Text>
         <Places
