@@ -29,7 +29,7 @@ const PlacesAutocomplete = () => {
 
   return (
     <Combobox onSelect={handleSelect} aria-labelledby="demo">
-      <ComboboxInput value={value} onChange={handleInput} disabled={!ready} className='css-137mmt0' name="searchAddress" placeholder="Type address"/>
+      <ComboboxInput value={value} onChange={handleInput} disabled={!ready} className='css-1f1trk8' name="searchAddress" placeholder="Type address"/>
       <ComboboxPopover>
         <ComboboxList>
           {status === "OK" &&
