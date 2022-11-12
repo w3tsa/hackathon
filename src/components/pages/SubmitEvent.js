@@ -1,5 +1,5 @@
 import { React } from "react";
-import { FormControl, Text, FormLabel, Input, Button, Stack } from '@chakra-ui/react';
+import { FormControl, Text, FormLabel, Input, Button, Stack, Container } from '@chakra-ui/react';
 import axios from 'axios';
 import { getGeocode, getLatLng } from 'use-places-autocomplete';
 import {
@@ -61,7 +61,7 @@ function SubmitEvent() {
 
   return isLoaded ? (
     <div className='submitevent public'>
-      <Stack>
+      <Container maxW={'2xl'}>
         <div>
           <Text fontSize='3xl'>
             Submit your event!
@@ -104,7 +104,7 @@ function SubmitEvent() {
             </Button>
           </FormControl>
         </form>
-      </Stack>
+      </Container>
 
     </div>
   ) : (
