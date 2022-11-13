@@ -11,8 +11,16 @@ import axios from "axios";
 import { getGeocode, getLatLng } from "use-places-autocomplete";
 import { useJsApiLoader } from "@react-google-maps/api";
 import PlacesAutocomplete from "../elements/SearchAutocomplete";
+import {useNavigate} from 'react-router-dom';
 
 function SubmitEvent() {
+
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/`; 
+    navigate(path);
+  }
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
     googleMapsApiKey: process.env.REACT_APP_MAP_KEY,
@@ -124,15 +132,28 @@ function SubmitEvent() {
               />
             </div>
 
-            <Button
-              mt="1rem"
-              loadingText="Submitting"
-              colorScheme="teal"
-              variant="outline"
-              type="submit"
-            >
-              Submit
-            </Button>
+            <div>
+              <Button
+                mt="1rem"
+                loadingText="Submitting"
+                colorScheme="teal"
+                variant="outline"
+                type="submit"
+              >
+                Submit
+              </Button>
+
+              <Button
+                mt="1rem"
+                loadingText="Loading"
+                colorScheme="teal"
+                variant="outline"
+                marginLeft={"5px"}
+                onClick={routeChange}
+              >
+                Go Back
+              </Button>
+            </div>
           </FormControl>
         </form>
       </Container>

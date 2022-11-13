@@ -12,6 +12,9 @@ import {
   ComboboxOption,
 } from "@reach/combobox";
 import "@reach/combobox/styles.css";
+import { useNavigate } from 'react-router-dom';
+import { Button } from "@chakra-ui/react";
+
 
 const Places = ({ setDestination, setLocation }) => {
   const {
@@ -30,15 +33,34 @@ const Places = ({ setDestination, setLocation }) => {
     setLocation({ lat, lng });
     setDestination({ lat, lng });
   };
+
+  let navigate = useNavigate();
+  const routeChange = () => {
+    let path = `/`;
+    navigate(path);
+  }
+
   return (
     <Combobox onSelect={handleSelect}>
-      <ComboboxInput
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        className="combobox-input"
-        placeholder="Search..."
-        style={{ color: "black", border: "1px solid black" }}
-      />
+      <div style={{display:"flex"}}>
+
+        <ComboboxInput
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className="css-1f1trk8 css-1kp110w combobox-input"
+          placeholder="Search..."
+          style={{ color: "black", border: "1px solid black" }}
+        />
+        <Button
+          loadingText="Loading"
+          colorScheme="teal"
+          variant="outline"
+          marginLeft={"20px"}
+          onClick={routeChange}
+        >
+          Go Back
+        </Button>
+      </div>
       <ComboboxPopover>
         <ComboboxList>
           {status === "OK" &&
